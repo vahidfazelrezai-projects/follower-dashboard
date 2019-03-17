@@ -10,12 +10,17 @@ app.get('/followers', (req, res) => {
   rs.queries.query({
     'sql': {
       'query': `
-        SELECT 
-          handle, 
-          ARRAY_AGG(ARRAY_CREATE(_event_time, followers)) data
-        FROM yang.twitter_followers 
-        WHERE _event_time > CURRENT_TIMESTAMP() - DAYS(7)
-        GROUP BY handle
+SELECT 
+    handle, 
+    ARRAY_AGG(
+        OBJECT(
+            ARRAY_CREATE('timestamp', 'seconds', 'followers'), 
+            ARRAY_CREATE(_event_time, UNIX_SECONDS(_event_time), followers)
+        )
+    ) data
+FROM yang.twitter_followers 
+WHERE _event_time > CURRENT_TIMESTAMP() - DAYS(7)
+GROUP BY handle
       `,
     }
   }, (err, response, body) => {

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const app = require('express')();
 const rs = require('rockset')(
-  process.env.ROCK_API_KEY || fs.readFileSync('ROCK_API_KEY', 'utf8'), 
+  process.env.ROCK_API_KEY || fs.readFileSync('ROCK_API_KEY', 'utf8').trim(), 
   'https://api.rs2.usw2.rockset.com',
 );
 

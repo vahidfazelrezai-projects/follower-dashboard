@@ -6,6 +6,7 @@ const rs = require('rockset')(
 );
 
 app.get('/followers', (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   rs.queries.query({
     'sql': {
       'query': `

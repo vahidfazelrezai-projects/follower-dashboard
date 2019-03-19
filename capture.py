@@ -23,7 +23,9 @@ HANDLES = [
   'BetoORourke',
   'JoeBiden',
   'AndrewGillum',
-  'BilldeBlasio'
+  'BilldeBlasio',
+  'AndrewYang',
+  'realDonaldTrump'
 ]
 
 for handle in HANDLES:

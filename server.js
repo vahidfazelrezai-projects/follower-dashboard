@@ -19,7 +19,7 @@ SELECT
         )
     ) data
 FROM yang.twitter_followers 
-WHERE _event_time > CURRENT_TIMESTAMP() - DAYS(7)
+WHERE _event_time > CURRENT_TIMESTAMP() - DAYS(30)
 GROUP BY handle
       `,
     }
